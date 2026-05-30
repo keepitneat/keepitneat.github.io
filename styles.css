@@ -81,6 +81,14 @@ a:hover {
 .tagline {
   font-size: 1.125rem;
   color: var(--text-muted);
+  margin: 0;
+}
+
+/* Second tagline line — full-strength text so it lands as the punch. */
+.tagline-punch {
+  font-size: 1.125rem;
+  color: var(--text);
+  margin: 0;
 }
 
 /* ─── Intro ─────────────────────────────────────────────────── */
@@ -92,6 +100,11 @@ a:hover {
 .intro p {
   font-size: 1.0625rem;
   margin-bottom: 1rem;
+}
+
+/* Green emphasis for key phrases — use sparingly. */
+.highlight {
+  color: var(--accent);
 }
 
 .intro p:last-child {
@@ -179,10 +192,24 @@ a.app-link:hover {
 }
 
 .app-name {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
+}
+
+.app-icon {
+  width: 1.25em;
+  height: 1.25em;
+  flex-shrink: 0;
+}
+
+/* Keep the icon in brand green even on coming-soon entries where the
+   name text is muted. */
+.app-soon .app-icon {
+  color: var(--accent);
 }
 
 .app-link .app-name {

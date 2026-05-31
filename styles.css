@@ -248,3 +248,17 @@ footer p {
 footer p:last-child {
   margin-bottom: 0;
 }
+
+/* Small inline icons on the footer links (github, ko-fi). Sized to the
+   text and color-inherited, so they ride the accent-green link color. */
+.footer-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  margin-right: 0.35em;
+  flex-shrink: 0;
+}
+
+svg#ko-fi {
+  margin-left: 0.25em;
+}

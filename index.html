@@ -7,9 +7,24 @@
   <meta name="description" content="A small series of replacement apps for things you do every day. No ads. No tracking. No nonsense.">
   <meta name="theme-color" content="#047857">
   <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+  <script>(function(){var s=localStorage.getItem('theme');if(s&&s!=='system')document.documentElement.setAttribute('data-theme',s);})();</script>
   <link rel="stylesheet" href="/styles.css">
 </head>
-<body>
+<body id="top">
+  <header class="topnav">
+    <div class="topnav-inner">
+      <a class="topnav-brand" href="#top">keep_it_neat</a>
+      <nav class="topnav-links">
+        <a href="#promise">The promise</a>
+        <a href="#apps">The apps</a>
+      </nav>
+      <div class="theme-toggle" role="radiogroup" aria-label="Theme">
+        <button type="button" data-theme-set="system" aria-pressed="true">Sys</button>
+        <button type="button" data-theme-set="light" aria-pressed="false">Light</button>
+        <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+      </div>
+    </div>
+  </header>
   <main>
     <header class="hero">
       <img src="/icons/neat-logo.png" alt="" width="48" height="48" class="hero-mark">
@@ -27,7 +42,7 @@
       <p>I started Keep It Neat as a small series of replacement apps for things I do every day. <span class="highlight">No ads. No tracking. No nonsense. Just the actual thing.</span></p>
     </section>
 
-    <section class="promise">
+    <section class="promise" id="promise">
       <h2>the promise</h2>
       <dl>
         <div class="principle">
@@ -44,12 +59,12 @@
         </div>
         <div class="principle">
           <dt><span class="letter">T</span> Thoughtful.</dt>
-          <dd>No notifications you didn't ask for. No dark patterns. Accessible by default — keyboard-friendly, screen-reader-friendly, never reliant on color alone. No subscriptions or upsell tiers — free, or one clear price.</dd>
+          <dd>No notifications you didn't ask for. No dark patterns. Accessible by default — keyboard-friendly, screen-reader-friendly, never reliant on color alone. No ads, and nothing crippled to push an upgrade. If anything's ever paid, the price will be clear and fair — no subscription traps.</dd>
         </div>
       </dl>
     </section>
 
-    <section class="apps">
+    <section class="apps" id="apps">
       <h2>the apps</h2>
       <ul>
         <li>
@@ -121,5 +136,26 @@
       <p>If you find these useful, you can <a href="https://ko-fi.com/keepitneat">buy me a coffee<svg id="ko-fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="footer-icon" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></a>.</p>
     </footer>
   </main>
+  <script>
+  (function () {
+    var root = document.documentElement;
+    function apply(t) { if (t === 'system') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', t); }
+    function current() { return localStorage.getItem('theme') || 'system'; }
+    function paint() {
+      var c = current();
+      document.querySelectorAll('[data-theme-set]').forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.dataset.themeSet === c));
+      });
+    }
+    document.querySelectorAll('[data-theme-set]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var t = b.dataset.themeSet;
+        if (t === 'system') localStorage.removeItem('theme'); else localStorage.setItem('theme', t);
+        apply(t); paint();
+      });
+    });
+    paint();
+  })();
+  </script>
 </body>
 </html>

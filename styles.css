@@ -70,6 +70,126 @@
   }
 }
 
+[data-theme="light"] {
+  --bg:     #faf9f6;
+  --text:   #1a1c1b;
+  --muted:  #5b6b64;
+  --accent: #047857;
+  --border: #e4e6e3;
+  --card:   #ffffff;
+}
+
+[data-theme="dark"] {
+  --bg:     #0e1311;
+  --text:   #e6efe9;
+  --muted:  #9fc2b4;
+  --accent: #34d399;
+  --border: #1c2a25;
+  --card:   #121817;
+}
+
+/* ─── Top nav ───────────────────────────────────────────────────── */
+
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.topnav-inner {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.topnav-brand {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  flex-shrink: 0;
+  margin-right: auto;
+}
+
+.topnav-brand:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.topnav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.topnav-links a {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.12s ease;
+}
+
+.topnav-links a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* 3-state theme toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.theme-toggle button {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  background: transparent;
+  color: var(--muted);
+  border: none;
+  border-left: 1px solid var(--border);
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: background 0.12s ease, color 0.12s ease;
+  letter-spacing: 0.02em;
+}
+
+.theme-toggle button:first-child {
+  border-left: none;
+}
+
+.theme-toggle button:hover {
+  color: var(--text);
+}
+
+.theme-toggle button[aria-pressed="true"] {
+  background: var(--accent);
+  color: #fff;
+}
+
+[data-theme="light"] .theme-toggle button[aria-pressed="true"] {
+  color: #fff;
+}
+
+[data-theme="dark"] .theme-toggle button[aria-pressed="true"] {
+  color: #0e1311;
+}
+
 /* ─── Reset + base ─────────────────────────────────────────────── */
 
 * {

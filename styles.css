@@ -272,10 +272,11 @@ section h2::before {
 
 .app-link {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 0.75rem 0;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  padding: 0.85rem 0;
   border-bottom: 1px solid var(--border);
   text-decoration: none;
   color: var(--text);
@@ -320,8 +321,7 @@ a.app-link:hover .app-icon {
   font-family: var(--mono);
   font-size: 0.8rem;
   color: var(--muted);
-  text-align: right;
-  white-space: nowrap;
+  text-align: center;
 }
 
 /* ─── Footer ────────────────────────────────────────────────────── */

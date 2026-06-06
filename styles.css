@@ -190,6 +190,46 @@
   color: #0e1311;
 }
 
+/* Hamburger button — hidden on wide screens, shown ≤640px */
+.nav-toggle {
+  display: none;
+  width: 38px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  cursor: pointer;
+}
+.nav-toggle svg { width: 20px; height: 20px; }
+.nav-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+/* On wide screens the menu is an inline row (links + toggle) */
+.topnav-menu { display: flex; align-items: center; gap: 1.25rem; }
+
+@media (max-width: 640px) {
+  .topnav-inner { position: relative; }
+  .nav-toggle { display: inline-flex; }
+  .topnav-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+  .topnav-menu.open { display: flex; }
+}
+
 /* ─── Reset + base ─────────────────────────────────────────────── */
 
 * {

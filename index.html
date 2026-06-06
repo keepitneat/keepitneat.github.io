@@ -14,14 +14,19 @@
   <header class="topnav">
     <div class="topnav-inner">
       <a class="topnav-brand" href="#top">keep_it_neat</a>
-      <nav class="topnav-links">
-        <a href="#promise">The promise</a>
-        <a href="#apps">The apps</a>
-      </nav>
-      <div class="theme-toggle" role="radiogroup" aria-label="Theme">
-        <button type="button" data-theme-set="system" aria-pressed="true">Sys</button>
-        <button type="button" data-theme-set="light" aria-pressed="false">Light</button>
-        <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+      <div class="topnav-menu" id="nav-menu">
+        <nav class="topnav-links">
+          <a href="#promise">The promise</a>
+          <a href="#apps">The apps</a>
+        </nav>
+        <div class="theme-toggle" role="radiogroup" aria-label="Theme">
+          <button type="button" data-theme-set="system" aria-pressed="true">Sys</button>
+          <button type="button" data-theme-set="light" aria-pressed="false">Light</button>
+          <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+        </div>
       </div>
     </div>
   </header>
@@ -155,6 +160,23 @@
       });
     });
     paint();
+  })();
+
+  (function () {
+    var btn = document.getElementById('nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    if (!btn || !menu) return;
+    function close() { menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
+    document.addEventListener('click', function (e) {
+      if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== btn) close();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
   })();
   </script>
 </body>

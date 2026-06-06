@@ -478,3 +478,42 @@ footer p:last-child {
 svg#ko-fi {
   margin-left: 0.2em;
 }
+
+/* ─── Privacy page (/privacy/) ──────────────────────────────────── */
+
+.privacy {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem;
+}
+
+.privacy-back {
+  color: var(--muted);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+.privacy-back:hover { color: var(--accent); text-decoration: none; }
+
+.privacy h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 1.75rem 0 0;
+}
+
+.privacy-hero {
+  font-size: 2.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  margin: 0.25rem 0 1.5rem;
+}
+
+.privacy p { line-height: 1.65; margin-bottom: 1rem; }
+.privacy-caveat { font-style: italic; color: var(--muted); }
+.privacy-note { font-size: 0.875rem; color: var(--muted); }
+
+.privacy footer {
+  margin-top: 2.5rem;
+}
